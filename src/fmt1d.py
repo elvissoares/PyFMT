@@ -1,4 +1,5 @@
 import numpy as np
+import timeit
 from scipy.ndimage import convolve1d
 # Author: Elvis do A. Soares
 # Github: @elvissoares
@@ -37,9 +38,14 @@ def integrate1dplanar(f,z,dz):
 def integrate1dspherical(f,r,dr):
     return np.sum(f*4*np.pi*r**2)*dr
 
-####################################################
-####### The FMT Functional on 1d geometries   ######
-####################################################
+
+" The DFT model for hard-sphere fluid on 1d geometries"
+
+" The hard-sphere FMT functional implemented are the following: "
+" fmtmethod = RF (Rosenfeld functional) "
+"           = WBI (White Bear version I) "
+"           = WBII (White Bear version II) "
+
 class FMT1D():
     def __init__(self,L,d=np.array([1.0]),method='WBI',geometry='Planar'):
         self.geometry = geometry
@@ -79,16 +85,30 @@ class FMT1D():
             self.w2[i] = self.d[i]*np.pi*np.ones(nd)
             self.w2vec[i] = twopi*x
 
+        print('==== The FMT for hard-sphere fluid DFT ====')
+        print('Geometry:',self.geometry )
+        print('FMT method:',self.method )
+        print('L =',self.L)
+        print('---------------------------')
+        print('Number os species =',self.species)
+        print('d:',self.d)
+
     def Set_BulkDensities(self,rhob):
+        print('---- Setting bulk quantities ----')
         self.rhob = rhob
         self.Calculate_mu()
         self.Set_InitialCondition()
+        print('rhob:',self.rhob)
+        print('muid:',self.muid)
+        print('muexc:',self.muexc)
     
     def Set_External_Potential(self,extpotmodel='hardwall',params='None'):
+        print('---- Setting external potential ----')
         self.extpotmodel = extpotmodel
         self.params = params
-        if self.extpotmodel  == 'hardwall' or self.extpotmodel  == 'hardpore':
+        if self.extpotmodel  == 'hardwall' or self.extpotmodel  == 'hardpore' or self.extpotmodel  == 'hardsphere':
             self.Vext[:] = 0.0
+        print('External Potential model is:',self.extpotmodel)
 
     def Set_InitialCondition(self):
         nsig = (0.5*self.d/self.delta).astype(int)
@@ -160,13 +180,13 @@ class FMT1D():
 
         aux = -self.n0*np.log(self.oneminusn3)+(self.phi2/self.oneminusn3)*(self.n1*self.n2-(self.n1vec*self.n2vec)) + (self.phi3/(24*np.pi*self.oneminusn3**2))*(self.n2*self.n2*self.n2-3*self.n2*(self.n2vec*self.n2vec))
 
-        self.Fhs = self.integrate(aux,self.z,self.delta)
+        self.Fexc = self.integrate(aux,self.z,self.delta)
 
-        self.F = self.Fid+self.Fhs
+        self.F = self.Fid+self.Fexc
 
     def Calculate_Omega(self):
         self.Calculate_Free_energy()
-        self.Omega = (self.F + self.integrate((self.Vext-self.mu[:,np.newaxis])*self.rho,self.z,self.delta))/self.L
+        self.Omega = (self.F + self.integrate((self.Vext-self.mu[:,np.newaxis])*self.rho,self.z,self.delta))
 
     def Calculate_c1(self):
         self.dPhidn0 = -np.log(self.oneminusn3 )
@@ -223,8 +243,11 @@ class FMT1D():
 
         self.mu = self.muid + self.muexc
 
-    def Calculate_Equilibrium(self,alpha0=0.19,dt=0.01,atol=1e-8,rtol=1e-6,logoutput=False):
-        " Global variables for the FIRE algorithm"
+    def Calculate_Equilibrium(self,alpha0=0.19,dt=0.01,rtol=1e-4,atol=1e-5,logoutput=False):
+
+        print('---- Obtaining the thermodynamic equilibrium ----')
+
+        # Fire algorithm
         Ndelay = 20
         Nmax = 10000
         finc = 1.1
@@ -236,6 +259,8 @@ class FMT1D():
         alpha = alpha0
         Npos = 0
         Nneg = 0
+
+        starttime = timeit.default_timer()
 
         lnrho = np.log(self.rho)
         V = np.zeros_like(self.rho)
@@ -272,9 +297,18 @@ class FMT1D():
             V[:] += 0.5*dt*F
 
             error = max(np.abs(F.min()),F.max())
-            if error/error0 < rtol or error < atol: break
+            if error/error0 < rtol and error < atol: break
 
             if logoutput: print(i,self.Omega,error)
         self.Niter = i
 
         del V, F  
+
+        print("Time to achieve equilibrium:", timeit.default_timer() - starttime, 'sec')
+        print('Number of iterations:', self.Niter)
+        print('error:', error)
+        print('---- Equilibrium quantities ----')
+        print('Fid =',self.Fid)
+        print('Fexc =',self.Fexc)
+        print('Omega =',self.Omega)
+        print('================================')

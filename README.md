@@ -34,18 +34,18 @@ $$ \frac{\partial \Omega}{\partial \rho_i(\boldsymbol{r})} = k_B T \ln(\rho_i(\b
 On the folder 'examples' you can find different applications of the FMT. 
 
 ## Hard-Sphere near a Hardwall
-|![Figure1](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-eta0.4257.png)|![Figure2](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-eta0.4783.png)|
+|![Figure1](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-eta0.4257-allmethods.png)|![Figure2](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-eta0.4783-allmethods.png)|
 |:--:|:--:|
 | <b>Fig.1 - The density profiles of a pure hard-sphere fluid at a planar hard wall with bulk packing fraction of η = 0.4257. </b>| <b>Fig.2 - The density profiles of a pure hard-sphere fluid at a planar hard wall with bulk packing fraction of η = 0.4783. </b>|
 
 ## Hard-Sphere Mixture near a Hardwall
 
-|![Figure3](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-mixture-eta%3D0.39-x1%3D0.25-ratio3-small.png)|![Figure4](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-mixture-eta%3D0.39-x1%3D0.25-ratio3-big.png)|
+|![Figure3](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-mixture-eta%3D0.39-x1%3D0.25-ratio3-small-allmethods.png)|![Figure4](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-mixture-eta%3D0.39-x1%3D0.25-ratio3-big-allmethods.png)|
 |:--:|:--:|
 | <b>Fig.3 - Density profiles at a planar hard wall of the *small spheres* of a binary mixture with size ratio σ_b = 3σ_s and packing η = 0.39 and x1 = 0.25. </b>| <b>Fig.4 - Density profiles at a planar hard wall of the *big spheres* of a binary mixture with size ratio σ_b = 3σ_s and packing η = 0.39 and x1 = 0.25. </b>|
 
 ## Hard-Sphere Radial Distribution Function
 
-|![Figure5](https://github.com/elvissoares/PyFMT/blob/main/examples/radialdistribution-rhob0.2.png)|![Figure6](https://github.com/elvissoares/PyFMT/blob/main/examples/radialdistribution-rhob0.9.png)|
+|![Figure5](https://github.com/elvissoares/PyFMT/blob/main/examples/radialdistribution-rhob0.2-allmethods.png)|![Figure6](https://github.com/elvissoares/PyFMT/blob/main/examples/radialdistribution-rhob0.9-allmethods.png)|
 |:--:|:--:|
 | <b>Fig.5 - The radial distribution function of a pure hard-sphere fluid with bulk density ρ_b = 0.2. </b>| <b>Fig.6 - The radial distribution function of a pure hard-sphere fluid with bulk density ρ_b = 0.9.  </b>|
