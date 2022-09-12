@@ -17,7 +17,7 @@ The hard-sphere contribution, $F^{\textrm{hs}}$, represents the hard-sphere excl
 
 $$F^\text{hs}[\{\rho_i (\boldsymbol{r})\}] = k_B T\int_{V} d \boldsymbol{r}\ \Phi_\textrm{FMT}(\{ n_\alpha(\boldsymbol{r})\})$$
 
-where $n_\alpha$ are the weigthed densities given by the convolution $ n_\alpha(\boldsymbol{r}) = \sum_i \int_{V} d \boldsymbol{r}'\ \rho_i (\boldsymbol{r})\omega_\alpha(\boldsymbol{r}-\boldsymbol{r}')$. The function $\Phi$ can be described using different formulations of the fundamental measure theory (FMT) as
+where $ n_\alpha(\boldsymbol{r}) = \sum_i \int_{V} d \boldsymbol{r}'\ \rho_i (\boldsymbol{r})\omega^{(\alpha)}_i(\boldsymbol{r}-\boldsymbol{r}')$ are the weigthed densities given by the convolution with the weigth function $\omega^{(\alpha)}_i(\boldsymbol{r})$. The function $\Phi$ can be described using different formulations of the fundamental measure theory (FMT) as
 
 - [x] **R**osenfeld **F**unctional (**RF**) - [Rosenfeld, Y., Phys. Rev. Lett. 63, 980–983 (1989)](https://link.aps.org/doi/10.1103/PhysRevLett.63.980)
 - [x] **W**hite **B**ear version **I** (**WBI**) - [Yu, Y.-X. & Wu, J., J. Chem. Phys. 117, 10156–10164 (2002)](http://aip.scitation.org/doi/10.1063/1.1520530); [Roth, R., Evans, R., Lang, A. & Kahl, G., J. Phys. Condens. Matter 14, 12063–12078 (2002)](https://iopscience.iop.org/article/10.1088/0953-8984/14/46/313)
@@ -36,3 +36,7 @@ On the folder 'examples' you can find different applications of the FMT.
 |![Figure1](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-eta0.4257.png)|![Figure2](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-eta0.4783.png)|
 |:--:|:--:|
 | <b>Fig.1 - The density profiles of a pure hard-sphere fluid at a planar hard wall with bulk packing fraction of η = 0.4257. </b>| <b>Fig.2 - The density profiles of a pure hard-sphere fluid at a planar hard wall with bulk packing fraction of η = 0.4783. </b>|
+
+|![Figure3](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-mixture-eta%3D0.39-x1%3D0.25-ratio3-small.png)|![Figure4](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-mixture-eta%3D0.39-x1%3D0.25-ratio3-big.png)|
+|:--:|:--:|
+| <b>Fig.3 - Density profiles at a planar hard wall of the *small spheres* of a binary mixture with size ratio σ_b = 3σ_s and packing η = 0.39 and x1 = 0.25. </b>| <b>Fig.4 - Density profiles at a planar hard wall of the *big spheres* of a binary mixture with size ratio σ_b = 3σ_s and packing η = 0.39 and x1 = 0.25. </b>|
