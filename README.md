@@ -33,10 +33,6 @@ $$ \frac{\partial \Omega}{\partial \rho_i(\boldsymbol{r})} = k_B T \ln(\rho_i(\b
 
 On the folder 'examples' you can find different applications of the FMT. 
 
-|![Figure1](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-eta0.4257.png)|
-|:--:|
-| <b>Fig.1 - The density profiles of a pure hard-sphere fluid at a planar hard wall with bulk packing fraction of $\eta = 0.4257$ </b>|
-
-|![Figure2](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-eta0.4783.png)|
-|:--:|
-| <b>Fig.1 - The density profiles of a pure hard-sphere fluid at a planar hard wall with bulk packing fraction of $\eta = 0.4783$ </b>|
+|![Figure1](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-eta0.4257.png)|![Figure2](https://github.com/elvissoares/PyFMT/blob/main/examples/hardwall-eta0.4783.png)|
+|:--:|:--:|
+| <b>Fig.1 - The density profiles of a pure hard-sphere fluid at a planar hard wall with bulk packing fraction of η = 0.4257. </b>| <b>Fig.2 - The density profiles of a pure hard-sphere fluid at a planar hard wall with bulk packing fraction of η = 0.4783. </b>|
